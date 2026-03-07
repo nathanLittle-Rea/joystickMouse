@@ -1,0 +1,48 @@
+# MicroPython compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# MicroPython bytecode
+*.mpy
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Thonny IDE
+.thonny/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+
+# Testing and coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# System files
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Hardware-specific calibration (optional - uncomment if you want to ignore)
+# config_local.py
+# calibration.json
