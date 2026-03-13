@@ -1,0 +1,235 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (lib_symbols
+    (symbol "Device:R" (pin_numbers (hide)) (pin_names (offset 0))
+      (property "Reference" "R" (at 2.032 0 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "R" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (symbol "R_0_1" (rectangle (start -1.016 -2.032) (end 1.016 2.032)))
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.778) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+        (pin passive line (at 0 -3.81 90) (length 1.778) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+      )
+    )
+  )
+
+  ; ----------------------------------------------------------------
+  ; NET DEFINITIONS (used by netlist export)
+  ; ----------------------------------------------------------------
+  ; ROW nets:   ROW0..ROW3  (GP0-GP3)
+  ; COL nets:   COL0..COL3  (GP4-GP7)
+  ; ENC_CLK     GP10
+  ; ENC_DT      GP11
+  ; ENC_SW      GP12
+  ; I2C_SDA     GP16
+  ; I2C_SCL     GP17
+  ; +3V3        Pico 3V3 out (pin 36)
+  ; GND         Pico GND
+  ; VBUS        Pico VBUS (pin 40) - 5V from USB
+
+  ; ----------------------------------------------------------------
+  ; PICO (U1)  - 40-pin footprint
+  ; ----------------------------------------------------------------
+  (symbol (lib_id "MCU_RaspberryPi:RPi_Pico") (at 120 80 0) (unit 1)
+    (property "Reference" "U1" (at 120 55 0))
+    (property "Value" "Raspberry_Pi_Pico" (at 120 57 0))
+    (property "Footprint" "MyCustLib:RPi_Pico_SMD" (at 0 0 0) (effects (hide)))
+  )
+
+  ; ----------------------------------------------------------------
+  ; KEY MATRIX  SW1-SW16  +  D1-D16
+  ; Layout: 4 rows x 4 cols, 19.05mm spacing
+  ; Each switch connects: one terminal -> ROW via diode (anode=ROW, cathode=switch)
+  ;                       other terminal -> COL
+  ; ----------------------------------------------------------------
+
+  ; Row 0
+  (symbol (lib_id "Switch:SW_Push") (at 20 20 0) (unit 1)
+    (property "Reference" "SW1") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 20 15 0) (unit 1)
+    (property "Reference" "D1") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 40 20 0) (unit 1)
+    (property "Reference" "SW2") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 40 15 0) (unit 1)
+    (property "Reference" "D2") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 60 20 0) (unit 1)
+    (property "Reference" "SW3") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 60 15 0) (unit 1)
+    (property "Reference" "D3") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 80 20 0) (unit 1)
+    (property "Reference" "SW4") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 80 15 0) (unit 1)
+    (property "Reference" "D4") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  ; Row 1
+  (symbol (lib_id "Switch:SW_Push") (at 20 40 0) (unit 1)
+    (property "Reference" "SW5") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 20 35 0) (unit 1)
+    (property "Reference" "D5") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 40 40 0) (unit 1)
+    (property "Reference" "SW6") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 40 35 0) (unit 1)
+    (property "Reference" "D6") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 60 40 0) (unit 1)
+    (property "Reference" "SW7") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 60 35 0) (unit 1)
+    (property "Reference" "D7") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 80 40 0) (unit 1)
+    (property "Reference" "SW8") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 80 35 0) (unit 1)
+    (property "Reference" "D8") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  ; Row 2
+  (symbol (lib_id "Switch:SW_Push") (at 20 60 0) (unit 1)
+    (property "Reference" "SW9") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 20 55 0) (unit 1)
+    (property "Reference" "D9") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 40 60 0) (unit 1)
+    (property "Reference" "SW10") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 40 55 0) (unit 1)
+    (property "Reference" "D10") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 60 60 0) (unit 1)
+    (property "Reference" "SW11") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 60 55 0) (unit 1)
+    (property "Reference" "D11") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 80 60 0) (unit 1)
+    (property "Reference" "SW12") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 80 55 0) (unit 1)
+    (property "Reference" "D12") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  ; Row 3
+  (symbol (lib_id "Switch:SW_Push") (at 20 80 0) (unit 1)
+    (property "Reference" "SW13") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 20 75 0) (unit 1)
+    (property "Reference" "D13") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 40 80 0) (unit 1)
+    (property "Reference" "SW14") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 40 75 0) (unit 1)
+    (property "Reference" "D14") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 60 80 0) (unit 1)
+    (property "Reference" "SW15") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 60 75 0) (unit 1)
+    (property "Reference" "D15") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  (symbol (lib_id "Switch:SW_Push") (at 80 80 0) (unit 1)
+    (property "Reference" "SW16") (property "Value" "MX_Switch")
+    (property "Footprint" "MX_Alps_Hybrid:MX-1U-NoLED"))
+  (symbol (lib_id "Device:D") (at 80 75 0) (unit 1)
+    (property "Reference" "D16") (property "Value" "1N4148")
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"))
+
+  ; ----------------------------------------------------------------
+  ; ROTARY ENCODER (ENC1)
+  ; ----------------------------------------------------------------
+  (symbol (lib_id "Device:Rotary_Encoder_Switch") (at 100 20 0) (unit 1)
+    (property "Reference" "ENC1") (property "Value" "EC11")
+    (property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"))
+
+  ; ----------------------------------------------------------------
+  ; OLED CONNECTOR (J1) - 4-pin header above keys
+  ; ----------------------------------------------------------------
+  (symbol (lib_id "Connector:Conn_01x04_Pin") (at 50 5 0) (unit 1)
+    (property "Reference" "J1") (property "Value" "OLED_SSD1306")
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"))
+
+  ; ----------------------------------------------------------------
+  ; RESET BUTTON (SW17)
+  ; ----------------------------------------------------------------
+  (symbol (lib_id "Switch:SW_Push") (at 130 20 0) (unit 1)
+    (property "Reference" "SW17") (property "Value" "RESET")
+    (property "Footprint" "Button_Switch_THT:SW_SPST_PTS645"))
+
+  ; ----------------------------------------------------------------
+  ; NETS / WIRE CONNECTIONS
+  ; ----------------------------------------------------------------
+
+  ; ROW0 (GP0) -> anode of D1,D2,D3,D4
+  (wire (pts (xy 20 13) (xy 80 13)))   ; ROW0 bus
+  (label "ROW0" (at 20 13 0))
+
+  ; ROW1 (GP1) -> anode of D5,D6,D7,D8
+  (wire (pts (xy 20 33) (xy 80 33)))
+  (label "ROW1" (at 20 33 0))
+
+  ; ROW2 (GP2) -> anode of D9,D10,D11,D12
+  (wire (pts (xy 20 53) (xy 80 53)))
+  (label "ROW2" (at 20 53 0))
+
+  ; ROW3 (GP3) -> anode of D13,D14,D15,D16
+  (wire (pts (xy 20 73) (xy 80 73)))
+  (label "ROW3" (at 20 73 0))
+
+  ; COL0 (GP4) -> pin2 of SW1,SW5,SW9,SW13
+  (wire (pts (xy 18 20) (xy 18 80)))
+  (label "COL0" (at 18 20 0))
+
+  ; COL1 (GP5) -> pin2 of SW2,SW6,SW10,SW14
+  (wire (pts (xy 38 20) (xy 38 80)))
+  (label "COL1" (at 38 20 0))
+
+  ; COL2 (GP6) -> pin2 of SW3,SW7,SW11,SW15
+  (wire (pts (xy 58 20) (xy 58 80)))
+  (label "COL2" (at 58 20 0))
+
+  ; COL3 (GP7) -> pin2 of SW4,SW8,SW12,SW16
+  (wire (pts (xy 78 20) (xy 78 80)))
+  (label "COL3" (at 78 20 0))
+
+  ; Encoder nets
+  (label "ENC_CLK" (at 95 18 0))
+  (label "ENC_DT"  (at 95 20 0))
+  (label "ENC_SW"  (at 95 22 0))
+  (label "GND"     (at 95 24 0))
+  (label "+3V3"    (at 95 26 0))
+
+  ; OLED connector nets
+  (label "GND"     (at 46 3 0))
+  (label "+3V3"    (at 48 3 0))
+  (label "I2C_SDA" (at 50 3 0))
+  (label "I2C_SCL" (at 52 3 0))
+
+  ; Reset button: RESET_PIN to GND
+  (label "RUN"  (at 128 18 0))
+  (label "GND"  (at 128 22 0))
+
+)
